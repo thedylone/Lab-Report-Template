@@ -1,10 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{report}[2022/11/18]
+\ProvidesClass{labreport}[2022/11/19]
 
-\LoadClass[12pt]{article}
+\LoadClassWithOptions{article}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
-\usepackage{nomencl}
-\usepackage{etoolbox}
+\usepackage{nomencl} % for nomen
+\usepackage{etoolbox} % for nomen
+\usepackage[nottoc,notlot,notlof,numbib]{tocbibind} % for citations
+\usepackage{natbib} % for citations
 \makenomenclature
 
 %% ----------------------------------------------------------------
@@ -91,3 +93,8 @@
     \printnomenclature
     \newpage
     }
+
+%% ----------------------------------------------------------------
+%% References (aka Bibliography)
+
+\bibliographystyle{agsm}
