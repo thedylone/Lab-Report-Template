@@ -3,11 +3,32 @@
 
 \LoadClassWithOptions{article}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
-\usepackage{nomencl} % for nomen
-\usepackage{etoolbox} % for nomen
-\usepackage[nottoc,notlot,notlof,numbib]{tocbibind} % for citations
-\usepackage{natbib} % for citations
+\usepackage{setspace}
+\onehalfspacing
+%% Table of Contents
+% \setcounter{tocdepth}{2}
+\usepackage[hidelinks]{hyperref}
+% Nomenclature
+\usepackage[stdsubgroups]{nomencl}
+\usepackage{etoolbox}
 \makenomenclature
+%% Figures and images
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{subcaption}
+%% Tables
+\renewcommand{\arraystretch}{1.5}
+\usepackage{tabularx}
+\usepackage[tableposition=above]{caption}
+%% Equations
+\usepackage{amsmath}
+%% Citations
+\usepackage[nottoc,notlot,notlof,numbib]{tocbibind}
+\usepackage{natbib}
+\bibliographystyle{agsm}
+%% Appendix
+\usepackage[title,titletoc]{appendix}
+
 
 %% ----------------------------------------------------------------
 %% Page Numbering
@@ -74,27 +95,24 @@
 %% ----------------------------------------------------------------
 %% Nomenclature & Abbr.
 
+\setlength{\nomlabelwidth}{5em}
 \newenvironment{nomen}
     {
-    \section*{Nomenclature and abbreviations}
-    \addcontentsline{toc}{section}{\protect\numberline{}Nomenclature and abbreviations}
     %% This code creates the groups
     % -----------------------------------------
     \renewcommand\nomgroup[1]{
       \item[\bfseries
-      \ifstrequal{##1}{A}{}{% %% Roman symbols first
-      \ifstrequal{##1}{B}{}{% %% Greek symbols
-      \ifstrequal{##1}{C}{}{}}}% %% Abbreviations last
+      \ifstrequal{##1}{A}{Latin Letters}{% %% Latin symbols first
+      \ifstrequal{##1}{G}{Greek Letters}{% %% Greek symbols
+      \ifstrequal{##1}{M}{Abbreviations}{% %% Abbreviations
+      \ifstrequal{##1}{X}{Superscripts}{% %% Superscripts
+      \ifstrequal{##1}{Z}{Subscripts}}}}} % %% Subscripts
     ]}
     % -----------------------------------------
-    \renewcommand{\nomname}{}
+    \renewcommand{\nomname}{Nomenclature and abbreviations}
+    \addcontentsline{toc}{section}{\protect\numberline{}Nomenclature and abbreviations}
     }
     {
     \printnomenclature
     \newpage
     }
-
-%% ----------------------------------------------------------------
-%% References (aka Bibliography)
-
-\bibliographystyle{agsm}
