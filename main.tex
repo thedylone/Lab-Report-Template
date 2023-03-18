@@ -8,10 +8,10 @@
 
 \title{Lab Report Template}
 \subtitle{Subtitle}
-\author{Dylan Chua}
+\author{\href{https://github.com/thedylone/Lab-Report-Template}{Dylan Chua}}
 \department{Mechanical Engineering}
-\organisation{Imperial College London}
-\date{November 2022}
+\organisation{\href{mailto:dylan.chua22@imperial.ac.uk}{Imperial College London}}
+\date{March 2023}
 
 \begin{document}
 %TC:ignore
@@ -48,7 +48,7 @@ Something \cite{Bayer_etal_2013} in Table \ref{tab:gauge_pos}.
 \begin{table}[h]
     \centering
     \caption{Positions of strain gauges}
-    \begin{tabularx}{\textwidth}{|>{\hsize=.20\hsize}X|>{\hsize=.80\hsize}X|} \hline
+    \begin{tabularx}{\textwidth}{|l|X|} \hline
         Gauge & Position \\ \hline
         1, 2 & Edge of the hole, measure maximum strain \\ \hline
         3, 4, 5 & Same horizontal as 1 and 2, measure strain at varying distances \\ \hline
@@ -57,14 +57,23 @@ Something \cite{Bayer_etal_2013} in Table \ref{tab:gauge_pos}.
     \label{tab:gauge_pos}
 \end{table}
 
+
+\begin{tbl}{label}{caption}{|l|X|X|}
+    A & B & C \\ \hline
+    x & y & z \\ \hline
+\end{tbl}
+
 \section{Results}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{finite_element}
-    \caption{Experimental values with FE data}
-    \label{fig:finite_element}
-\end{figure}
+\begin{img}{subfigures}{caption}
+    \begin{subimg}[0.45\textwidth]{sublabel_a}{subcaption}{finite_element}
+    \end{subimg}
+    \hfill
+    \begin{subimg}[0.45\textwidth]{sublabel_b}{subcaption}{finite_element}
+    \end{subimg}
+\end{img}
+
+Figure \ref{fig:subfigures} shows two figures! Also Figure \ref{fig:sublabel_a}.
 
 \section{Discussion}
 \begin{equation}
@@ -89,5 +98,5 @@ Something \cite{Bayer_etal_2013} in Table \ref{tab:gauge_pos}.
 
     
 \end{appendices}
-
+%TC:endignore
 \end{document}
